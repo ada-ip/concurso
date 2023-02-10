@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ConcursoClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="Jugador" package="" visibility="public" xPosition="98.0" yPosition="44.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="puntosPartida" type="int" visibility="private"/>
+        <Field name="respuesta" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="sumarPunto" returnType="void" visibility="public"/>
+        <Method name="mostrarPuntos" returnType="void" visibility="public"/>
+        <Method name="contestarPregunta" returnType="void" visibility="public">
+          <Argument type="String" name="respuesta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Partida" package="" visibility="private" xPosition="514.0" yPosition="22.0">
+      <Fields>
+        <Field name="numRondas" type="int" visibility="private"/>
+        <Field name="turnos" type="int[]" visibility="private"/>
+        <Field name="jugadores" type="ArrayList&lt;Jugador&gt;" visibility="private"/>
+        <Field name="preguntas" type="ArrayList&lt;Pregunta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="inicializarJugadores" returnType="void" visibility="private"/>
+        <Method name="inicializarTipoJuego" returnType="void" visibility="private"/>
+        <Method name="asignarTurnos" returnType="void" visibility="private"/>
+        <Method name="jugarRonda" returnType="void" visibility="public">
+          <Argument type="int" name="numRonda"/>
+        </Method>
+        <Method name="generarPreguntas" returnType="void" visibility="private"/>
+        <Method name="mostrarPuntuaciones" returnType="void" visibility="public"/>
+        <Method name="mostrarGanador" returnType="void" visibility="public"/>
+        <Method name="addJugador" returnType="void" visibility="public">
+          <Argument type="Jugador" name="nuevoJugador"/>
+        </Method>
+        <Method name="eliminarJugador" returnType="void" visibility="public">
+          <Argument type="int" name="indice"/>
+        </Method>
+        <Method name="addPregunta" returnType="void" visibility="public">
+          <Argument type="Pregunta" name="nuevaPregunta"/>
+        </Method>
+        <Method name="eliminarPregunta" returnType="void" visibility="public">
+          <Argument type="int" name="indice"/>
+        </Method>
+        <Method name="jugadorRepetido" returnType="boolean" visibility="private">
+          <Argument type="String" name="nombreJugador"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Pregunta" package="" visibility="public" xPosition="1053.0" yPosition="96.0">
+      <Fields>
+        <Field name="enunciado" type="String" visibility="protected"/>
+        <Field name="respuestaCorrecta" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrarPregunta" returnType="void" visibility="public"/>
+        <Method name="comprobarRespuesta" returnType="boolean" visibility="public">
+          <Argument type="Jugador" name="jugador"/>
+        </Method>
+        <Method name="mostrarRespuestaCorrecta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PreguntaNumeros" package="" visibility="public" xPosition="765.0" yPosition="480.0">
+      <Fields>
+        <Field name="expresionMatematica" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="generarExpresionMatematica" returnType="String" visibility="private"/>
+        <Method name="evaluarExpresion" returnType="int" visibility="private">
+          <Argument type="String" name="expresion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PreguntaLetras" package="" visibility="public" xPosition="1071.0" yPosition="480.0">
+      <Fields>
+        <Field name="palabraConLetrasOcultas" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="elegirPalabra" returnType="String" visibility="private"/>
+        <Method name="ocultarLetras" returnType="String" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="PreguntaIngles" package="" visibility="public" xPosition="1334.0" yPosition="454.0">
+      <Fields>
+        <Field name="respuestas" type="String[]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ordenarRespuestas" returnType="String[]" visibility="private"/>
+        <Method name="mostrarRespuestas" returnType="void" visibility="private"/>
+        <Method name="comprobarRespuesta" returnType="boolean" visibility="public">
+          <Argument type="Jugador" name="jugador"/>
+        </Method>
+        <Method name="seleccionarPregunta" returnType="String[]" visibility="private"/>
+        <Method name="mostrarPregunta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GestionJugadores" package="" visibility="public" xPosition="21.0" yPosition="454.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="stm" type="Statement" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="mostrarJugadores" returnType="void" visibility="public"/>
+        <Method name="mostrarRanking" returnType="void" visibility="public"/>
+        <Method name="registrarJugador" returnType="boolean" visibility="public">
+          <Argument type="String" name="nombreJugador"/>
+        </Method>
+        <Method name="eliminarJugador" returnType="void" visibility="public">
+          <Argument type="String" name="nombreJugador"/>
+        </Method>
+        <Method name="comprobarJugador" returnType="boolean" visibility="public">
+          <Argument type="String" name="nombreJugador"/>
+        </Method>
+        <Method name="modificarPuntuacion" returnType="void" visibility="public">
+          <Argument type="String" name="nombreJugador"/>
+          <Argument type="int" name="puntos"/>
+        </Method>
+        <Method name="getCodigoJugador" returnType="int" visibility="public">
+          <Argument type="String" name="nombreJugador"/>
+        </Method>
+        <Method name="cerrarConexion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GestionPartidas" package="" visibility="public" xPosition="487.0" yPosition="497.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="stm" type="Statement" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addPartida" returnType="void" visibility="public">
+          <Argument type="Partida" name="partida"/>
+        </Method>
+        <Method name="mostrarHistoricoPartidas" returnType="void" visibility="public"/>
+        <Method name="cerrarConexion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="PreguntaNumeros" target="Pregunta"/>
+    <UseRelation name="utiliza" source="GestionPartidas" target="GestionJugadores" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="Partida" target="Jugador" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <UseRelation name="utiliza" source="Partida" target="GestionJugadores" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="PreguntaLetras" target="Pregunta"/>
+    <UseRelation name="utiliza" source="GestionPartidas" target="Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="Partida" target="Pregunta" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <IsRelation name="is" source="PreguntaIngles" target="Pregunta"/>
+    <UseRelation name="utiliza" source="GestionPartidas" target="Partida" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
